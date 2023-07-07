@@ -23,6 +23,10 @@ func EncodeRawURL(src []byte) (base64Bytes []byte) {
 func DecodeRawURL(base64Bytes []byte) (source []byte, err error) {
 	enc := base64.RawURLEncoding
 	dbuf := make([]byte, enc.DecodedLen(len(base64Bytes)))
-	n, err := enc.Decode(dbuf, base64Bytes)
+	n, err := enc.Decode(dbuf, base64Bytes);
+	if err != nil {
+
+		return
+	}
 	return dbuf[:n], err
 }
